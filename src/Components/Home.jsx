@@ -1,4 +1,5 @@
 import React from "react";
+import "../Styles/Home.scss"
 
 
 
@@ -25,20 +26,19 @@ const Home = () => {
   ];
 
   
-
   const addToCartHandler = (options) => {
     
   };
   return (
     <div className="home">
       {productList.map((i) => (
-        <ProductCard
-          key={i.id}
-          imgSrc={i.imgSrc}
-          name={i.name}
-          price={i.price}
-          id={i.id}
-          handler={addToCartHandler}
+        <ProductCard 
+        key={i.id}
+        imgSrc={i.imgSrc}
+        name={i.name}
+        price={i.price}
+        id={i.id}
+        handler={addToCartHandler}
         />
       ))}
     </div>
