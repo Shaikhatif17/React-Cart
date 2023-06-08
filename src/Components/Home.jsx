@@ -1,5 +1,8 @@
 import React from "react";
-import "../Styles/Home.scss"
+import "../Styles/Home.scss";
+import { toast } from "react-hot-toast";
+import ProductCard from "./ProductCard";
+
 
 
 
@@ -27,7 +30,8 @@ const Home = () => {
 
   
   const addToCartHandler = (options) => {
-    
+    console.log(options);
+    toast.success('added to cart')
   };
   return (
     <div className="home">
@@ -45,15 +49,6 @@ const Home = () => {
   );
 };
 
-const ProductCard = ({ name, id, price, handler, imgSrc }) => (
-  <div className="productCard">
-    <img src={imgSrc} alt={name} />
-    <p>{name}</p>
-    <h4>${price}</h4>
-    <button onClick={() => handler({ name, price, id, quantity: 1, imgSrc })}>
-      Add to Cart
-    </button>
-  </div>
-);
+
 
 export default Home;
