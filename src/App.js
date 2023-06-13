@@ -3,7 +3,9 @@ import Header from "./Components/Header";
 import Home from "./Components/Home";
 import { Toaster } from "react-hot-toast";
 import "./Styles/App.scss";
+import "./Styles/MediaQuery.scss";
 import Cart from "./Components/Cart";
+
 
 
 
