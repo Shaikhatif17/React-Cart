@@ -2,6 +2,7 @@ import React from "react";
 import "../Styles/Home.scss";
 import { toast } from "react-hot-toast";
 import ProductCard from "./ProductCard";
+import { useDispatch } from "react-redux";
 
 
 
@@ -27,10 +28,12 @@ const Home = () => {
       id: "sdjfdlaajsdbhjabhsjdfdfv",
     },
   ];
-
+const dispatch= useDispatch();
   
   const addToCartHandler = (options) => {
     console.log(options);
+ 
+    dispatch({type:'addToCart',payload:options});
     toast.success('added to cart')
   };
   return (
