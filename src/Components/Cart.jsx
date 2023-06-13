@@ -1,14 +1,36 @@
 import React from "react";
 import { AiFillDelete } from "react-icons/ai";
-import {  useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import '../Styles/Cart.scss';
 
 const Cart = () => {
-
   const { cartItems, subTotal, tax, shipping, total } = useSelector(
     (state) => state.cart
   );
- 
+  const dispatch = useDispatch();
+
+  const increment = (id) => {
+    dispatch({
+      type: "addToCart",
+      payload: { id },
+    });
+    dispatch({ type: "calculatePrice" });
+  };
+  const decrement = (id) => {
+    dispatch({
+      type: "decrement",
+      payload: id,
+    });
+
+    dispatch({ type: "calculatePrice" });
+  };
+  const deleteHandler = (id) => {
+    dispatch({
+      type: "deleteFromCart",
+      payload: id,
+    });
+    dispatch({ type: "calculatePrice" });
+  };
 
   return (
     <div className="cart">
@@ -22,10 +44,9 @@ const Cart = () => {
               qty={i.quantity}
               id={i.id}
               key={i.id}
-              decrement
-             increment
-            deleteHandler
-            
+              decrement={decrement}
+              increment={increment}
+              deleteHandler={deleteHandler}
             />
           ))
         ) : (
